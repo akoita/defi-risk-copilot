@@ -7,7 +7,8 @@ SELECT
   f.mean_value,
   f.pct_internal_calls,
   a.is_anomaly,
-  a.anomaly_score,
+  a.dist AS anomaly_score,
+  a.dist_z,
   f.updated_at
 FROM `${PROJECT_ID}.${DATASET}.address_features` f
 JOIN `${PROJECT_ID}.${DATASET}.address_anomalies` a USING(address);

@@ -10,6 +10,6 @@ SELECT
   LOWER(token_address) AS token_address,
   DATE(block_timestamp) AS d,
   COUNT(*) AS txs
-FROM `bigquery-public-data.blockchain_analytics.ethereum_mainnet.token_transfers`
-WHERE _PARTITIONDATE BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND CURRENT_DATE()
+FROM `${TOKEN_TRANSFERS_TABLE}`
+WHERE DATE(block_timestamp) BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY) AND CURRENT_DATE()
 GROUP BY token_address, d;
